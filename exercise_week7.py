@@ -66,8 +66,8 @@ with open("router_config.json", "w") as f:
 with open("router_config.json", "r")as f:
     loaded_config = json.load(f)
 
-print(f"Loaded hostname: {loaded_config{'hostname'}}")
-print(f"Number of interfaces: {"len(loaded_config['interfaces])"}
+print(f"Loaded hostname: {loaded_config['hostname']}")
+print(f"Number of interfaces: {"len(loaded_config['interfaces])"}")
 print()
 
 #---------------------------------------------------------------
@@ -78,8 +78,35 @@ print("=== EXERCISE 4: Save YAML to file ===")
 
 #FILL IN THE BLANK: open "router_config" for writing 
 with open("router_config.yaml", "w")as f:
-    yaml.dump(router_config. f, default_flow_style=False)
+    yaml.dump(router_config, f, default_flow_style=False)
 
 print("saved to router_config.yaml")
 print()
 
+#---------------------------------------------------------------
+# EXERCISE 5: CHALLENGE - Modify and save 
+#---------------------------------------------------------------
+#Add a new interface  to the config, then save both JSON and YAML
+
+print("=== EXERCISE 5: CHALLENGE ===")
+
+#Add a new interface (Loopback0)
+new_interface = {"name": "loopback0", "ip": "1.1.1.1", "status": "up"}
+
+#FILL IN THE BLANK: append the new interface to the list
+router_config["interfaces"].append(new_interface)
+
+#save updated config
+with open("updated_config.json", "w"):
+    json.dump(router_config, f, indent=2)
+
+print(f"Added interface: (new_interface['name'])")
+print(f"total interfaces now: {len(router_config['interfaces'])}")
+print()
+
+print("=" * 50)
+print("Exercise Complete! Check your files:")
+print(" - router_config.json")
+print(" - router_config.yaml")
+print(" - updated_config.json")
+print("=" * 50)
